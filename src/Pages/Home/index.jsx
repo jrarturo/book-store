@@ -1,6 +1,6 @@
-import './App.css'
+import '../App/App.css'
 
-function App() {
+function Home() {
   return (
     <>
       <div className='bg-gray-100'>
@@ -10,4 +10,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
