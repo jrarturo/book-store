@@ -4,7 +4,7 @@ import Books from '../../assets/Icons/Books'
 const NavBar = () => {
   const activeStyle = 'underline underline-offset-4'
   return (
-    <nav className='flex justify-between items-center fixed z-20 w-full py-2 px-8 text-sm font-light'>
+    <nav className='flex justify-between items-center fixed z-20 top-0 w-full py-2 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <div className='flex justify-items-center items-center gap-1'>
