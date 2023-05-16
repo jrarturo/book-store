@@ -1,7 +1,10 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { BookShopContext } from '../../Context'
 import Books from '../../assets/Icons/Books'
 
 const NavBar = () => {
+  const context = useContext(BookShopContext)
   const activeStyle = 'underline underline-offset-4'
   return (
     <nav className='flex justify-between items-center fixed z-20 top-0 w-full py-2 px-8 text-sm font-light'>
@@ -13,13 +16,13 @@ const NavBar = () => {
           </div>
         </li>
 
-        <li>🛒 5</li>
+        <li>🛒 {context.count}</li>
         <li>
           <NavLink
-            to='/checkout'
+            to='/categories'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Checkout
+            Categories
           </NavLink>
         </li>
         <li>

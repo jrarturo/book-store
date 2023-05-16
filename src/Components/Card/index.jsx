@@ -1,4 +1,8 @@
+import { useContext } from 'react'
+import { BookShopContext } from '../../Context'
+
 const Card = (data) => {
+  const context = useContext(BookShopContext)
   return (
     <div className='bg-white cursor-pointer w-56 h-60 rounded-lg mb-8'>
       <figure className='relative mb-5 w-full h-4/5'>
@@ -10,7 +14,10 @@ const Card = (data) => {
           src={data?.data?.volumeInfo?.imageLinks?.thumbnail}
           alt='book'
         />
-        <div className='absolute top-0 right-0 flex justify-center items-center text-xs bg-white/80 w-6 h-6 rounded-full m-2'>
+        <div
+          className='absolute top-0 right-0 flex justify-center items-center text-xs bg-white/80 w-6 h-6 rounded-full m-2'
+          onClick={() => context.setCount(context.count + 1)}
+        >
           ➕
         </div>
       </figure>
