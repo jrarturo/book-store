@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
 import { BookShopContext } from '../../Context'
 import Books from '../../assets/Icons/Books'
@@ -15,8 +16,14 @@ const NavBar = () => {
             <NavLink to='/'>BookStore</NavLink>
           </div>
         </li>
-
-        <li>🛒 {context.count}</li>
+        <li className='font-semibold italic'>
+          <NavLink
+            to='/my-account'
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            My Account
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to='/categories'
@@ -52,15 +59,9 @@ const NavBar = () => {
             My Orders
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to='/my-account'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            My Account
-          </NavLink>
+        <li className='flex items-center gap-1'>
+          <HiOutlineShoppingCart /> {context.count}
         </li>
-        <li></li>
       </ul>
     </nav>
   )

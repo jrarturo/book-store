@@ -1,4 +1,6 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom'
+import Categories from '../../Components/Categories'
+import CheckOutSideMenu from '../../Components/CheckOutSideMenu'
 import NavBar from '../../Components/Navbar'
 import { BookShopProvider } from '../../Context'
 import Home from '../Home'
@@ -34,6 +36,10 @@ const AppRoutes = () => {
     {
       path: '/sign-in',
       element: <SignIn />
+    },
+    {
+      path: '/categories',
+      element: <Categories />
     }
   ])
 
@@ -46,6 +52,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
+        <CheckOutSideMenu />
       </BrowserRouter>
     </BookShopProvider>
   )

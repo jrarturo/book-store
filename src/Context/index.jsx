@@ -27,9 +27,7 @@ export const BookShopProvider = ({ children }) => {
   // add to cart
   const [cartProducts, setCartProducts] = useState([])
   const deleteBook = (id) => {
-    const newCartProducts = cartProducts.filter(
-      (product) => product.volumeInfo.id !== id
-    )
+    const newCartProducts = cartProducts.filter((product) => product.id !== id)
     setCartProducts(newCartProducts)
   }
 
