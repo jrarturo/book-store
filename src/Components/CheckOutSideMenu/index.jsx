@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import { HiOutlineX } from 'react-icons/hi'
 import { BookShopContext } from '../../Context'
+import { calculateTotalPrice } from '../../utils'
 import OrderCart from '../OrderCart'
 
 const CheckOutSideMenu = () => {
   const context = useContext(BookShopContext)
-  console.log(context.cartProducts)
 
   return (
     <aside
@@ -36,6 +36,15 @@ const CheckOutSideMenu = () => {
             handleDeleteBook={context.deleteBook}
           />
         ))}
+      </div>
+      <div className='px-6 py-4'>
+        <p className='flex justify-between items-center'>
+          <span className='font-light'>Total:</span>
+          <span className='font-medium text-2xl'>
+            ${calculateTotalPrice(context.cartProducts).toLocaleString('es-CO')}{' '}
+            COP
+          </span>
+        </p>
       </div>
     </aside>
   )
