@@ -30,7 +30,12 @@ export const BookShopProvider = ({ children }) => {
   const deleteBook = (id) => {
     const newCartProducts = cartProducts.filter((product) => product.id !== id)
     setCartProducts(newCartProducts)
+    setCount(newCartProducts.length)
   }
+
+  // OrderCart
+
+  const [orderCart, setOrderCart] = useState([])
 
   return (
     <BookShopContext.Provider
@@ -47,7 +52,9 @@ export const BookShopProvider = ({ children }) => {
         isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
-        deleteBook
+        deleteBook,
+        orderCart,
+        setOrderCart
       }}
     >
       {children}
