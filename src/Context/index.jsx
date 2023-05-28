@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { calculateTotalPrice } from '../utils'
 
 export const BookShopContext = createContext()
 
@@ -37,6 +38,23 @@ export const BookShopProvider = ({ children }) => {
 
   const [orderCart, setOrderCart] = useState([])
 
+  // handle checkout
+
+  const handleCheckout = () => {
+    const orderToSave = {
+      // create a unique id
+      id: Math.random().toString(36).substr(2, 9),
+      date: new Date().toLocaleDateString(),
+      books: cartProducts,
+      totalBooks: cartProducts.length,
+      totalPrice: calculateTotalPrice(cartProducts)
+    }
+    setOrderCart([...orderCart, orderToSave])
+    setCartProducts([])
+    setCount(0)
+    closeCheckoutSideMenu()
+  }
+
   return (
     <BookShopContext.Provider
       value={{
@@ -54,7 +72,8 @@ export const BookShopProvider = ({ children }) => {
         closeCheckoutSideMenu,
         deleteBook,
         orderCart,
-        setOrderCart
+        setOrderCart,
+        handleCheckout
       }}
     >
       {children}

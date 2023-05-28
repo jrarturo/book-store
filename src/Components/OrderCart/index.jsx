@@ -15,13 +15,15 @@ const OrderCart = (props) => {
         </figure>
         <p className='text-sm font-light'> {title} </p>
       </div>
-      <div className='flex items-center gap-2'>
-        <p className='text-lg font-medium'> ${price} </p> <p> {currency} </p>
-        <HiOutlineX
-          className='cursor-pointer'
-          onClick={() => handleDeleteBook(id)}
-        />
-      </div>
+      {handleDeleteBook && (
+        <div className='flex items-center gap-2'>
+          <p className='text-lg font-medium'> ${price} </p> <p> {currency} </p>
+          <HiOutlineX
+            className='cursor-pointer'
+            onClick={() => handleDeleteBook(id)}
+          />
+        </div>
+      )}
     </div>
   )
 }

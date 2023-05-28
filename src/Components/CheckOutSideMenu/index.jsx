@@ -1,24 +1,12 @@
 import { useContext } from 'react'
 import { HiOutlineX } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 import { BookShopContext } from '../../Context'
 import { calculateTotalPrice } from '../../utils'
 import OrderCart from '../OrderCart'
 
 const CheckOutSideMenu = () => {
   const context = useContext(BookShopContext)
-
-  const handleCheckout = () => {
-    const orderToSave = {
-      date: new Date().toLocaleDateString(),
-      books: context.cartProducts,
-      totalBooks: context.cartProducts.length,
-      totalPrice: calculateTotalPrice(context.cartProducts)
-    }
-    context.setOrderCart([...context.orderCart, orderToSave])
-    context.setCartProducts([])
-    context.setCount(0)
-    context.closeCheckoutSideMenu()
-  }
 
   return (
     <aside
@@ -58,12 +46,14 @@ const CheckOutSideMenu = () => {
             COP
           </span>
         </p>
-        <button
-          className='w-full py-2 mt-4 bg-black rounded-md text-white font-semibold'
-          onClick={handleCheckout}
-        >
-          Checkout
-        </button>
+        <Link to='/my-orders/last'>
+          <button
+            className='w-full py-2 mt-4 bg-black rounded-md text-white font-semibold'
+            onClick={context.handleCheckout}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   )
